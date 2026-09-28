@@ -139,7 +139,7 @@ def main():
         sys.exit("No URLs found.")
 
     print(f"\nTesting {len(urls)} pages, {args.runs} run(s) each\n")
-    header = f"{'RUN':>3}  {'STATUS':>6}  {'TTFB':>8}  {'TOTAL':>8}  {'SIZE':>8}  {'CACHE':<18}  URL"
+    header = f"{'RUN':>3}  {'STATUS':>6}  {'TTFB':>8}  {'TOTAL':>8}  {'SIZE':>8}  {'CACHE':<24}  URL"
     print(header)
     print("-" * len(header))
 
@@ -149,11 +149,11 @@ def main():
             for r in pool.map(lambda u: time_page(u, args.user_agent, args.timeout), urls):
                 r["run"] = run
                 results.append(r)
-                status = color(str(r["status"] or "ERR"), "32" if r["status"] == 200 else "31")
+                status = color(f'{r["status"] or "ERR":>6}', "32" if r["status"] == 200 else "31")
                 ttfb = f"{r['ttfb']:7.2f}s" if r["ttfb"] is not None else "       -"
                 extra = f"  ({r['error']})" if r["error"] else ""
-                print(f"{run:>3}  {status:>6}  {ttfb}  {speed_color(r['total'], args.slow)}  "
-                      f"{r['size_kb']:6.0f}KB  {r['cache']:<18}  {r['url']}{extra}")
+                print(f"{run:>3}  {status}  {ttfb}  {speed_color(r['total'], args.slow)}  "
+                      f"{r['size_kb']:6.0f}KB  {r['cache']:<24}  {r['url']}{extra}")
 
     # Summary per run
     print()

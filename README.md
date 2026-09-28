@@ -106,12 +106,12 @@ Reading sitemap...
 
 Testing 42 pages, 2 run(s) each
 
-RUN  STATUS      TTFB     TOTAL      SIZE  CACHE               URL
--------------------------------------------------------------------
-  1     200     2.41s     2.58s      84KB  cf-cache-status: MISS  https://example.com/
-  1     200     0.38s     0.45s      61KB  cf-cache-status: MISS  https://example.com/about/
+RUN  STATUS      TTFB     TOTAL      SIZE  CACHE                     URL
+------------------------------------------------------------------------
+  1     200     2.41s     2.58s      84KB  cf-cache-status: MISS     https://example.com/
+  1     200     0.38s     0.45s      61KB  cf-cache-status: MISS     https://example.com/about/
   ...
-  2     200     0.09s     0.14s      84KB  cf-cache-status: HIT   https://example.com/
+  2     200     0.09s     0.14s      84KB  cf-cache-status: HIT      https://example.com/
 
 Run 1: 42 OK, 0 failed | avg 1.12s, median 0.94s, fastest 0.31s, slowest 3.20s | 6 slower than 2.0s
 Run 2: 42 OK, 0 failed | avg 0.18s, median 0.15s, fastest 0.08s, slowest 0.52s | 0 slower than 2.0s
